@@ -23,7 +23,7 @@ describe('checkAccessToken', () => {
     }
     assertNoError(err);
     should.exist(result);
-    result.should.have.keys(['protectedHeader', 'payload']);
+    result.should.have.include.keys(['protectedHeader', 'payload']);
   });
   it('fails with an expired token', async () => {
     const accessToken = await helpers.getOAuth2AccessToken({
@@ -41,14 +41,12 @@ describe('checkAccessToken', () => {
     }
     should.exist(err);
     should.not.exist(result);
-    err.status.should.equal(403);
-    err.data.type.should.equal('NotAllowedError');
-    should.exist(err.data.cause);
-    should.exist(err.data.cause.details);
-    should.exist(err.data.cause.details.code);
-    err.data.cause.details.code.should.equal('ERR_JWT_EXPIRED');
-    should.exist(err.data.cause.details.claim);
-    err.data.cause.details.claim.should.equal('exp');
+    err.name.should.equal('NotAllowedError');
+    should.exist(err.details);
+    err.details.should.have.include.keys(['httpStatusCode', 'code', 'claim']);
+    err.details.httpStatusCode.should.equal(403);
+    err.details.code.should.equal('ERR_JWT_EXPIRED');
+    err.details.claim.should.equal('exp');
   });
   it('fails on a future "nbf" claim', async () => {
     const accessToken = await helpers.getOAuth2AccessToken({
@@ -66,15 +64,12 @@ describe('checkAccessToken', () => {
     }
     should.exist(err);
     should.not.exist(result);
-    err.status.should.equal(403);
-    err.data.type.should.equal('NotAllowedError');
-    should.exist(err.data.cause);
-    should.exist(err.data.cause.details);
-    should.exist(err.data.cause.details.code);
-    err.data.cause.details.code.should.equal(
-      'ERR_JWT_CLAIM_VALIDATION_FAILED');
-    should.exist(err.data.cause.details.claim);
-    err.data.cause.details.claim.should.equal('nbf');
+    err.name.should.equal('NotAllowedError');
+    should.exist(err.details);
+    err.details.should.have.include.keys(['httpStatusCode', 'code', 'claim']);
+    err.details.httpStatusCode.should.equal(403);
+    err.details.code.should.equal('ERR_JWT_CLAIM_VALIDATION_FAILED');
+    err.details.claim.should.equal('nbf');
   });
   it('fails on a bad "typ" claim', async () => {
     const accessToken = await helpers.getOAuth2AccessToken({
@@ -91,15 +86,12 @@ describe('checkAccessToken', () => {
     }
     should.exist(err);
     should.not.exist(result);
-    err.status.should.equal(403);
-    err.data.type.should.equal('NotAllowedError');
-    should.exist(err.data.cause);
-    should.exist(err.data.cause.details);
-    should.exist(err.data.cause.details.code);
-    err.data.cause.details.code.should.equal(
-      'ERR_JWT_CLAIM_VALIDATION_FAILED');
-    should.exist(err.data.cause.details.claim);
-    err.data.cause.details.claim.should.equal('typ');
+    err.name.should.equal('NotAllowedError');
+    should.exist(err.details);
+    err.details.should.have.include.keys(['httpStatusCode', 'code', 'claim']);
+    err.details.httpStatusCode.should.equal(403);
+    err.details.code.should.equal('ERR_JWT_CLAIM_VALIDATION_FAILED');
+    err.details.claim.should.equal('typ');
   });
   it('fails on a bad "iss" claim', async () => {
     const accessToken = await helpers.getOAuth2AccessToken({
@@ -116,14 +108,11 @@ describe('checkAccessToken', () => {
     }
     should.exist(err);
     should.not.exist(result);
-    err.status.should.equal(403);
-    err.data.type.should.equal('NotAllowedError');
-    should.exist(err.data.cause);
-    should.exist(err.data.cause.details);
-    should.exist(err.data.cause.details.code);
-    err.data.cause.details.code.should.equal(
-      'ERR_JWT_CLAIM_VALIDATION_FAILED');
-    should.exist(err.data.cause.details.claim);
-    err.data.cause.details.claim.should.equal('iss');
+    err.name.should.equal('NotAllowedError');
+    should.exist(err.details);
+    err.details.should.have.include.keys(['httpStatusCode', 'code', 'claim']);
+    err.details.httpStatusCode.should.equal(403);
+    err.details.code.should.equal('ERR_JWT_CLAIM_VALIDATION_FAILED');
+    err.details.claim.should.equal('iss');
   });
 });
