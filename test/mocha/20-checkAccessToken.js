@@ -13,7 +13,7 @@ describe('checkAccessToken', () => {
 
   it('passes on a valid token', async () => {
     const accessToken = await helpers.getOAuth2AccessToken({audience});
-    const req = createRequest({accessToken});
+    const req = helpers.createRequest({accessToken});
     let err;
     let result;
     try {
@@ -31,7 +31,7 @@ describe('checkAccessToken', () => {
       // expired 10 minutes ago
       exp: Math.floor(Date.now() / 1000 - 600)
     });
-    const req = createRequest({accessToken});
+    const req = helpers.createRequest({accessToken});
     let err;
     let result;
     try {
@@ -56,7 +56,7 @@ describe('checkAccessToken', () => {
       // 10 minutes from now
       nbf: Math.floor(Date.now() / 1000 + 600)
     });
-    const req = createRequest({accessToken});
+    const req = helpers.createRequest({accessToken});
     let err;
     let result;
     try {
@@ -81,7 +81,7 @@ describe('checkAccessToken', () => {
       audience,
       typ: 'unexpected'
     });
-    const req = createRequest({accessToken});
+    const req = helpers.createRequest({accessToken});
     let err;
     let result;
     try {
@@ -106,7 +106,7 @@ describe('checkAccessToken', () => {
       audience,
       iss: 'urn:example:unexpected'
     });
-    const req = createRequest({accessToken});
+    const req = helpers.createRequest({accessToken});
     let err;
     let result;
     try {
