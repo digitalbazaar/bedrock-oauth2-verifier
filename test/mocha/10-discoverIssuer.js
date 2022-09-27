@@ -33,9 +33,6 @@ describe('discoverIssuer', () => {
     }
     should.exist(err);
     should.not.exist(result);
-    err.data.details.errors.should.have.length(1);
-    const [error] = err.data.details.errors;
-    error.name.should.equal('XXXError');
-    error.message.should.contain('YYY');
+    err.status.should.equal(404);
   });
 });
