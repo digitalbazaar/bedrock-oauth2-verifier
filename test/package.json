@@ -17,12 +17,9 @@
     "@bedrock/server": "^5.0.0",
     "@bedrock/test": "^8.0.5",
     "@bedrock/oauth2-verifier": "file:..",
-    "@digitalbazaar/http-client": "^3.2.0",
     "c8": "^7.11.3",
     "cross-env": "^7.0.3",
-    "jose": "^4.8.3",
-    "klona": "^2.0.5",
-    "sinon": "^14.0.0"
+    "jose": "^4.8.3"
   },
   "c8": {
     "excludeNodeModules": false,
