@@ -1,11 +1,9 @@
 # bedrock-oauth2-verifier ChangeLog
 
-## 1.0.1 - 2022-TBD
+## 1.0.1 - 2022-11-16
 
-### Added
+### Fixed
 - Add missing dependencies `@digitalbazaar/http-client@3.2` and `jose@4.11`.
-
-### Removed
 - Remove unused deps `@digitalbazaar/http-client`, `klona` and `sinon` from
   test.
 
