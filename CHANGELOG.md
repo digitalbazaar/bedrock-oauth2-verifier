@@ -1,6 +1,6 @@
 # bedrock-oauth2-verifier ChangeLog
 
-## 1.0.2 - 2023-08-dd
+## 1.0.2 - 2023-08-30
 
 ### Fixed
 - Fix unhandled promise rejection that could occur during issuer config
