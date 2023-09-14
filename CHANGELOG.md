@@ -1,5 +1,11 @@
 # bedrock-oauth2-verifier ChangeLog
 
+## 2.0.0 - 2023-09-xx
+
+### Changed
+- **BREAKING**: Drop support for Node.js < 18.
+- Use `@digitalbazaar/http-client@4`. This version required Node.js 18+.
+
 ## 1.0.2 - 2023-08-30
 
 ### Fixed
