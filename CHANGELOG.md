@@ -1,6 +1,6 @@
 # bedrock-oauth2-verifier ChangeLog
 
-## 2.0.0 - 2023-09-xx
+## 2.0.0 - 2023-09-15
 
 ### Changed
 - **BREAKING**: Drop support for Node.js < 18.
