@@ -1,6 +1,6 @@
 # bedrock-oauth2-verifier ChangeLog
 
-## 2.0.2 - 2023-10-dd
+## 2.0.2 - 2023-10-19
 
 ### Fixed
 - Simplify cache rotation promise code.
