@@ -1,6 +1,6 @@
 {
   "name": "@bedrock/oauth2-verifier",
-  "version": "2.0.1",
+  "version": "2.0.2-0",
   "type": "module",
   "description": "Bedrock OAuth2 Verifier Tools",
   "main": "./lib/index.js",
