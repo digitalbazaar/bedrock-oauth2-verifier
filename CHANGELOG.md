@@ -1,5 +1,11 @@
 # bedrock-oauth2-verifier ChangeLog
 
+## 2.1.0 - 2024-04-dd
+
+### Added
+- Add optional `jwt` param to allow passing a JWT directly
+  to `checkAccessToken`.
+
 ## 2.0.2 - 2023-10-19
 
 ### Fixed

@@ -1,5 +1,5 @@
 /*!
- * Copyright (c) 2022 Digital Bazaar, Inc. All rights reserved.
+ * Copyright (c) 2022-2024 Digital Bazaar, Inc. All rights reserved.
  */
 import * as helpers from './helpers.js';
 import {checkAccessToken} from '@bedrock/oauth2-verifier';
@@ -11,7 +11,7 @@ describe('checkAccessToken', () => {
   const audience = 'test:audience';
   const issuerConfigUrl = `${baseUrl}${mockData.oauth2IssuerConfigRoute}`;
 
-  it('passes on a valid token', async () => {
+  it('passes on a valid token passed via "Bearer" header', async () => {
     const accessToken = await helpers.getOAuth2AccessToken({audience});
     const req = helpers.createRequest({accessToken});
     let err;
@@ -24,6 +24,47 @@ describe('checkAccessToken', () => {
     assertNoError(err);
     should.exist(result);
     result.should.have.include.keys(['protectedHeader', 'payload']);
+  });
+  it('passes on a valid token passed via "jwt" param', async () => {
+    const jwt = await helpers.getOAuth2AccessToken({audience});
+    let err;
+    let result;
+    try {
+      result = await checkAccessToken({jwt, issuerConfigUrl, audience});
+    } catch(e) {
+      err = e;
+    }
+    assertNoError(err);
+    should.exist(result);
+    result.should.have.include.keys(['protectedHeader', 'payload']);
+  });
+  it('fails when passed neither "req" nor "jwt"', async () => {
+    let err;
+    let result;
+    try {
+      result = await checkAccessToken({issuerConfigUrl, audience});
+    } catch(e) {
+      err = e;
+    }
+    should.exist(err);
+    should.not.exist(result);
+    err.name.should.equal('TypeError');
+  });
+  it('fails when passed both "req" and "jwt"', async () => {
+    const accessToken = await helpers.getOAuth2AccessToken({audience});
+    const req = helpers.createRequest({accessToken});
+    let err;
+    let result;
+    try {
+      result = await checkAccessToken({
+        req, jwt: accessToken, issuerConfigUrl, audience
+      });
+    } catch(e) {
+      err = e;
+    }
+    should.exist(err);
+    should.not.exist(result);
+    err.name.should.equal('TypeError');
   });
   it('fails with an expired token', async () => {
     const accessToken = await helpers.getOAuth2AccessToken({
