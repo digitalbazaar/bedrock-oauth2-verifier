@@ -1,6 +1,6 @@
 # bedrock-oauth2-verifier ChangeLog
 
-## 2.1.1 - 2025-mm-dd
+## 2.1.1 - 2025-01-23
 
 ### Fixed
 - Use `...cache.peek(key)` in cache record rotation management code to
