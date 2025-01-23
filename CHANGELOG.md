@@ -3,6 +3,8 @@
 ## 2.2.0 - 2025-01-dd
 
 ### Added
+- Add `checkTargetScopedAccessToken()` to enable commonly used oauth scope
+  pattern based on request's target resource.
 - Allow custom `typ` claim for access tokens.
 
 ## 2.1.1 - 2025-01-23
