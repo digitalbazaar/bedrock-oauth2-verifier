@@ -14,12 +14,12 @@
     "@bedrock/core": "^6.0.1",
     "@bedrock/express": "^8.0.0",
     "@bedrock/https-agent": "^4.0.0",
+    "@bedrock/oauth2-verifier": "file:..",
     "@bedrock/server": "^5.0.0",
     "@bedrock/test": "^8.0.5",
-    "@bedrock/oauth2-verifier": "file:..",
     "c8": "^7.11.3",
     "cross-env": "^7.0.3",
-    "jose": "^4.8.3"
+    "jose": "^5.9.6"
   },
   "c8": {
     "excludeNodeModules": false,
