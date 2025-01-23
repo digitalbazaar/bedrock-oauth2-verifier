@@ -1,5 +1,10 @@
 # bedrock-oauth2-verifier ChangeLog
 
+## 2.2.0 - 2025-01-dd
+
+### Added
+- Allow custom `typ` claim for access tokens.
+
 ## 2.1.1 - 2025-01-23
 
 ### Fixed
