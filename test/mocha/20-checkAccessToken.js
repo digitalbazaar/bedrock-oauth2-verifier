@@ -38,6 +38,42 @@ describe('checkAccessToken', () => {
     should.exist(result);
     result.should.have.include.keys(['protectedHeader', 'payload']);
   });
+  it('passes on a valid token with custom "typ" claim', async () => {
+    const jwt = await helpers.getOAuth2AccessToken({
+      audience,
+      typ: 'jwt'
+    });
+    let err;
+    let result;
+    try {
+      result = await checkAccessToken({
+        jwt, issuerConfigUrl, audience, typ: 'jwt'
+      });
+    } catch(e) {
+      err = e;
+    }
+    assertNoError(err);
+    should.exist(result);
+    result.should.have.include.keys(['protectedHeader', 'payload']);
+  });
+  it('passes on a valid token with any "typ" claim', async () => {
+    const jwt = await helpers.getOAuth2AccessToken({
+      audience,
+      typ: 'anything'
+    });
+    let err;
+    let result;
+    try {
+      result = await checkAccessToken({
+        jwt, issuerConfigUrl, audience, typ: false
+      });
+    } catch(e) {
+      err = e;
+    }
+    assertNoError(err);
+    should.exist(result);
+    result.should.have.include.keys(['protectedHeader', 'payload']);
+  });
   it('fails when passed neither "req" nor "jwt"', async () => {
     let err;
     let result;
