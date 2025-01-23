@@ -1,6 +1,6 @@
 # bedrock-oauth2-verifier ChangeLog
 
-## 2.2.0 - 2025-01-dd
+## 2.2.0 - 2025-01-23
 
 ### Added
 - Add `checkTargetScopedAccessToken()` to enable commonly used oauth scope
