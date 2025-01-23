@@ -1,5 +1,12 @@
 # bedrock-oauth2-verifier ChangeLog
 
+## 2.1.1 - 2025-mm-dd
+
+### Fixed
+- Use `...cache.peek(key)` in cache record rotation management code to
+  avoid extending record TTL when not actually accessing cache for use.
+- Update dependencies.
+
 ## 2.1.0 - 2024-04-10
 
 ### Added
