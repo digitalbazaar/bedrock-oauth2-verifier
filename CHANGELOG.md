@@ -1,5 +1,10 @@
 # bedrock-oauth2-verifier ChangeLog
 
+## 2.3.1 - 2025-01-dd
+
+### Fixed
+- Ensure `getBasicAuthorizationCredentials()` is synchronous.
+
 ## 2.3.0 - 2025-01-24
 
 ### Added

@@ -13,7 +13,7 @@ describe('getBasicAuthorizationCredentials', () => {
     let err;
     let result;
     try {
-      result = await getBasicAuthorizationCredentials({req});
+      result = getBasicAuthorizationCredentials({req});
     } catch(e) {
       err = e;
     }
@@ -28,7 +28,7 @@ describe('getBasicAuthorizationCredentials', () => {
     let err;
     let result;
     try {
-      result = await getBasicAuthorizationCredentials({req});
+      result = getBasicAuthorizationCredentials({req});
     } catch(e) {
       err = e;
     }
