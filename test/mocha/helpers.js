@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019-2022 Digital Bazaar, Inc. All rights reserved.
+ * Copyright (c) 2019-2025 Digital Bazaar, Inc. All rights reserved.
  */
 import {importJWK, SignJWT} from 'jose';
 
@@ -26,11 +26,19 @@ export async function getOAuth2AccessToken({
   return builder.sign(key);
 }
 
-export function createRequest({accessToken}) {
-  const req = {
+export function createRequest({accessToken, credentials}) {
+  if(accessToken !== undefined) {
+    return {
+      get() {
+        return `Bearer ${accessToken}`;
+      }
+    };
+  }
+  const {userId, password} = credentials;
+  const b64 = Buffer.from(`${userId}:${password}`).toString('base64');
+  return {
     get() {
-      return `Bearer ${accessToken}`;
+      return `Basic ${b64}`;
     }
   };
-  return req;
 }

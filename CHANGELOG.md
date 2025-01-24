@@ -1,5 +1,11 @@
 # bedrock-oauth2-verifier ChangeLog
 
+## 2.3.0 - 2025-mm-dd
+
+### Added
+- Add `getBasicAuthorizationCredentials()` helper for parsing
+  "Authorization: Basic <credentials>" from a request.
+
 ## 2.2.0 - 2025-01-23
 
 ### Added
