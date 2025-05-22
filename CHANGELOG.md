@@ -1,5 +1,11 @@
 # bedrock-oauth2-verifier ChangeLog
 
+## 2.4.0 - 2025-05-dd
+
+### Changed
+- Use `@digitalbazaar/lru-memoize@4`. Existing cache defaults and options
+  are coerced from previous versions to the new version.
+
 ## 2.3.1 - 2025-01-24
 
 ### Fixed
